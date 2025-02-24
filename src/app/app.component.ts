@@ -6,6 +6,7 @@ import { Candidat } from './models/candidat';
 import { CvComponent } from './cv/cv.component';
 import { HomeAccountComponent } from './accounts/home-account/home-account.component';
 import { DirectComponent } from './direct/direct.component';
+import { ManageServersComponent } from './manage-servers/manage-servers.component';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +18,7 @@ import { DirectComponent } from './direct/direct.component';
     CvComponent,
     HomeAccountComponent,
     DirectComponent,
+    ManageServersComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
