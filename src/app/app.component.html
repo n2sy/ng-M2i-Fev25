@@ -1,7 +1,11 @@
-
 <div class="container">
-    <h1>Cours d'Angular avec M2i</h1>
-    <hr>
-    <app-first></app-first>
-    
+  <h1>Cours d'Angular avec M2i</h1>
+  <hr />
+  <app-first></app-first>
+  <hr />
+  <hr />
+  <app-second
+    (eventToParent)="lireLettre($event)"
+    [txtColor]="'green'"
+  ></app-second>
 </div>

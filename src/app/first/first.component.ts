@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { SecondComponent } from '../second/second.component';
 
 @Component({
   selector: 'app-first',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, SecondComponent],
   templateUrl: './first.component.html',
 })
 export class FirstComponent {
   prenom: string = 'nidhal';
   nom: string = 'jelassi';
-  couleurPrefere = 'yellow';
+  couleurPrefere = 'blue';
   hd = true;
 
   clickHandler() {
@@ -19,5 +20,9 @@ export class FirstComponent {
 
   changeValueInput(inp: any) {
     this.prenom = inp.value;
+  }
+
+  lireLettre(lettre) {
+    alert(lettre);
   }
 }
