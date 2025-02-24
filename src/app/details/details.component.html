@@ -5,15 +5,15 @@
         <img src="rotating_card_thumb2.png" />
       </div>
       <div class="user">
-        <img class="img-circle" [src]="selCand.avatar" />
+        <img class="img-circle" [src]="selCand?.avatar" />
       </div>
       <div class="content">
         <div class="main">
-          <h3 class="name">{{ selCand.prenom }} {{ selCand.nom }}</h3>
-          <p class="profession">{{ selCand.age }} ans</p>
+          <h3 class="name">{{ selCand?.prenom }} {{ selCand?.nom }}</h3>
+          <p class="profession">{{ selCand?.age }} ans</p>
 
           <p class="text-center">
-            {{ selCand.profession }}
+            {{ selCand?.profession }}
           </p>
         </div>
         <div class="footer">
