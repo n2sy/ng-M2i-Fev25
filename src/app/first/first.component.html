@@ -1,1 +1,21 @@
-<p>first works!</p>
+<h3>Je m'appelle {{ prenom }} {{ nom }}</h3>
+
+<div [hidden]="hd" [style.backgroundColor]="couleurPrefere">
+  Exemple de property binding
+</div>
+
+<button (click)="clickHandler()" class="btn btn-primary">Click me</button>
+<br />
+<label>2 way binding</label>
+<input [(ngModel)]="prenom" type="text" class="form-control" />
+<br />
+<label>2 way binding disséqué</label>
+<input
+  #inp
+  [value]="prenom"
+  (input)="changeValueInput(inp)"
+  type="text"
+  class="form-control"
+/>
+
+<!-- <h1>{{ inp.value }}</h1> -->
