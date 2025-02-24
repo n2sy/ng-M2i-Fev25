@@ -1,0 +1,12 @@
+<div
+  [ngStyle]="{
+    backgroundColor: bgColor,
+    color: txtColor
+  }"
+>
+  Exemple de ngStyle
+</div>
+
+<div [ngClass]="{ c1: class1, c2: class2 }">Exemple de ngClass</div>
+
+<button (click)="switchClass()">Switch Class</button>

@@ -4,11 +4,20 @@ import { FirstComponent } from './first/first.component';
 import { SecondComponent } from './second/second.component';
 import { Candidat } from './models/candidat';
 import { CvComponent } from './cv/cv.component';
+import { HomeAccountComponent } from './accounts/home-account/home-account.component';
+import { DirectComponent } from './direct/direct.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FirstComponent, SecondComponent, CvComponent],
+  imports: [
+    RouterOutlet,
+    FirstComponent,
+    SecondComponent,
+    CvComponent,
+    HomeAccountComponent,
+    DirectComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

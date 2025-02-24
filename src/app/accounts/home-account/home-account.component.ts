@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+import { AddAccountComponent } from '../add-account/add-account.component';
+import { ItemAccountComponent } from '../item-account/item-account.component';
 
 @Component({
   selector: 'app-home-account',
   standalone: true,
-  imports: [],
+  imports: [AddAccountComponent, ItemAccountComponent],
   templateUrl: './home-account.component.html',
   styleUrl: './home-account.component.css',
 })
@@ -11,11 +13,15 @@ export class HomeAccountComponent {
   tabAccounts = [
     {
       name: 'Alex Account',
-      statut: 'active',
+      status: 'active',
     },
     {
       name: 'Amine Account',
-      statut: 'inactive',
+      status: 'inactive',
     },
   ];
+
+  addNewAccount(newAcc) {
+    this.tabAccounts.push(newAcc);
+  }
 }

@@ -1,1 +1,14 @@
-<p>add-account works!</p>
+Account Name :
+<input #i type="text" class="form-control" />
+
+Account Status :
+<select #s class="form-control">
+  @for (st of allStatus; track $index) {
+  <option [value]="st">{{ st }}</option>
+  }
+</select>
+
+<br />
+<button (click)="onAddAccount(i.value, s.value)" class="btn btn-primary">
+  Add Account
+</button>
