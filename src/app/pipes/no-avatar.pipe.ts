@@ -2,12 +2,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'noAvatar',
-  standalone: true
+  standalone: true,
 })
 export class NoAvatarPipe implements PipeTransform {
-
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
+  transform(value: string): string {
+    if (value) return value;
+    else return 'avatar.jpg';
   }
-
 }
