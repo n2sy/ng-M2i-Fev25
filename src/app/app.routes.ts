@@ -6,13 +6,80 @@ import { HomeAccountComponent } from './accounts/home-account/home-account.compo
 import { AddComponent } from './add/add.component';
 import { InfosComponent } from './infos/infos.component';
 import { EditComponent } from './edit/edit.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 export let myRoutes: Routes = [
-  { path: '', component: AccueilComponent },
-  { path: 'cv', component: CvComponent },
-  { path: 'cv/:id', component: InfosComponent },
-  { path: 'cv/add', component: AddComponent },
-  { path: 'cv/:id/edit', component: EditComponent },
-  { path: 'servers', component: ManageServersComponent },
-  { path: 'accounts', component: HomeAccountComponent },
+  {
+    path: '',
+    loadComponent: () =>
+      import('../app/accueil/accueil.component').then(
+        (m) => m.AccueilComponent
+      ), // LAZY LOADING
+  },
+  {
+    path: 'cv',
+    children: [
+      {
+        path: '',
+        loadComponent: () =>
+          import('../app/cv/cv.component').then((m) => m.CvComponent),
+      },
+      {
+        path: 'add',
+        loadComponent: () =>
+          import('../app/add/add.component').then((m) => m.AddComponent),
+      },
+      {
+        path: ':id',
+        children: [
+          {
+            path: '',
+            loadComponent: () =>
+              import('../app/infos/infos.component').then(
+                (m) => m.InfosComponent
+              ),
+          },
+          {
+            path: 'edit',
+            loadComponent: () =>
+              import('../app/edit/edit.component').then((m) => m.EditComponent),
+          },
+        ],
+      },
+    ],
+  },
+  {
+    path: 'servers',
+    loadComponent: () =>
+      import('../app/manage-servers/manage-servers.component').then(
+        (m) => m.ManageServersComponent
+      ),
+  },
+  {
+    path: 'accounts',
+    loadComponent: () =>
+      import('../app/accounts/home-account/home-account.component').then(
+        (m) => m.HomeAccountComponent
+      ),
+  },
+  {
+    path: 'not-found',
+    loadComponent: () =>
+      import('../app/not-found/not-found.component').then(
+        (m) => m.NotFoundComponent
+      ),
+  },
+  { path: '**', redirectTo: 'not-found' },
 ];
+
+// export let myRoutes: Routes = [
+//   { path: '', component: AccueilComponent },
+//   { path: 'cv', component: CvComponent },
+//   { path: 'cv/add', component: AddComponent },
+//   { path: 'cv/:id', component: InfosComponent },
+//   { path: 'cv/:id/edit', component: EditComponent },
+//   { path: 'servers', component: ManageServersComponent },
+//   { path: 'accounts', component: HomeAccountComponent },
+//   { path: 'not-found', component: NotFoundComponent },
+//   { path: '**', redirectTo: 'not-found' },
+// ];
