@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ListeComponent } from '../liste/liste.component';
 import { DetailsComponent } from '../details/details.component';
 import { Candidat } from '../models/candidat';
+import { FirstService } from '../services/first.service';
+import { FirstComponent } from '../first/first.component';
+import { GestionCandidatsService } from '../services/gestion-candidats.service';
 
 @Component({
   selector: 'app-cv',
@@ -11,15 +14,30 @@ import { Candidat } from '../models/candidat';
   styleUrl: './cv.component.css',
 })
 export class CvComponent {
-  tabCandidats: Candidat[] = [
-    new Candidat(1, 'bart', 'simpson', 25, 'ingénieur', 'bart.jpeg'),
-    new Candidat(2, 'homer', 'simpson', 53, 'directeur', 'homer.png'),
-    new Candidat(3, 'lisa', 'simpson', 20, 'designer', 'lisa.png'),
-    new Candidat(4, 'nidhal', 'jelassi', 20, 'dev'),
-  ];
+  tabCandidats: Candidat[] = [];
   selectedCandidate: Candidat;
 
   recupererCandidatSelectionne(cand) {
     this.selectedCandidate = cand;
+  }
+
+  // 1ere manière d 'injecter une dépendance
+  //   constructor(private firstSer: FirstService) {}
+
+  // 2ème manière d 'injecter une dépendance
+  private firstSer = inject(FirstService);
+  private candSer = inject(GestionCandidatsService);
+
+  ngOnInit() {
+    this.firstSer.afficherInfos();
+    this.tabCandidats = this.candSer.getAllCandidates();
+  }
+
+  addNewCandidate() {
+    this.candSer.addCandidat();
+  }
+
+  afficherCandidates() {
+    console.log(this.candSer.getAllCandidates());
   }
 }
