@@ -23,4 +23,8 @@ export class GestionCandidatsService {
       new Candidat(3, 'New', 'CANDIDATE', 20, 'designer', 'lisa.png')
     );
   }
+
+  getCandidatById(id) {
+    return this.candidats.find((element) => element._id == id);
+  }
 }

@@ -1,16 +1,23 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, ParamMap, RouterLink } from '@angular/router';
+import { GestionCandidatsService } from '../services/gestion-candidats.service';
+import { Candidat } from '../models/candidat';
+import { NoAvatarPipe } from '../pipes/no-avatar.pipe';
 
 @Component({
   selector: 'app-infos',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, NoAvatarPipe],
   templateUrl: './infos.component.html',
   styleUrl: './infos.component.css',
 })
 export class InfosComponent {
-  myId;
-  constructor(private activatedRoute: ActivatedRoute) {}
+  candidateToShow: Candidat;
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private candSer: GestionCandidatsService
+  ) {}
 
   ngOnInit() {
     //1ere méthode
@@ -20,7 +27,7 @@ export class InfosComponent {
     //2ème méthode
     this.activatedRoute.paramMap.subscribe({
       next: (p: ParamMap) => {
-        this.myId = p.get('id');
+        this.candidateToShow = this.candSer.getCandidatById(p.get('id'));
       },
     });
   }
