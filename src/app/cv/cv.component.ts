@@ -5,6 +5,7 @@ import { Candidat } from '../models/candidat';
 import { FirstService } from '../services/first.service';
 import { FirstComponent } from '../first/first.component';
 import { GestionCandidatsService } from '../services/gestion-candidats.service';
+import { SecondService } from '../services/second.service';
 
 @Component({
   selector: 'app-cv',
@@ -12,6 +13,7 @@ import { GestionCandidatsService } from '../services/gestion-candidats.service';
   imports: [ListeComponent, DetailsComponent],
   templateUrl: './cv.component.html',
   styleUrl: './cv.component.css',
+  providers: [SecondService],
 })
 export class CvComponent {
   tabCandidats: Candidat[] = [];
@@ -25,11 +27,11 @@ export class CvComponent {
   //   constructor(private firstSer: FirstService) {}
 
   // 2ème manière d 'injecter une dépendance
-  private firstSer = inject(FirstService);
+  private secondSer = inject(SecondService);
   private candSer = inject(GestionCandidatsService);
 
   ngOnInit() {
-    this.firstSer.afficherInfos();
+    this.secondSer.bonjour();
     this.tabCandidats = this.candSer.getAllCandidates();
   }
 
