@@ -1,15 +1,25 @@
 import { DatePipe, NgClass, UpperCasePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { ShortPipe } from '../pipes/short.pipe';
+import { FormsModule } from '@angular/forms';
+import { FilterPipe } from '../pipes/filter.pipe';
 
 @Component({
   selector: 'app-manage-servers',
   standalone: true,
-  imports: [NgClass, UpperCasePipe, DatePipe, ShortPipe],
+  imports: [
+    NgClass,
+    UpperCasePipe,
+    DatePipe,
+    ShortPipe,
+    FormsModule,
+    FilterPipe,
+  ],
   templateUrl: './manage-servers.component.html',
   styleUrl: './manage-servers.component.css',
 })
 export class ManageServersComponent {
+  selectedStatut: string = '';
   allServers = [
     {
       nom: 'Production Server',
@@ -36,6 +46,14 @@ export class ManageServersComponent {
       statut: 'stable',
     },
   ];
+  addServer() {
+    this.allServers.push({
+      nom: 'NEW SERVER',
+      type: 'small',
+      date_d: new Date(2022, 1, 2),
+      statut: 'stable',
+    });
+  }
 
   affecterClasse(st) {
     return {
