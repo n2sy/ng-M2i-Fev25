@@ -7,6 +7,7 @@ import { AddComponent } from './add/add.component';
 import { InfosComponent } from './infos/infos.component';
 import { EditComponent } from './edit/edit.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { LoginComponent } from './login/login.component';
 
 export let myRoutes: Routes = [
   {
@@ -54,6 +55,11 @@ export let myRoutes: Routes = [
       import('../app/manage-servers/manage-servers.component').then(
         (m) => m.ManageServersComponent
       ),
+  },
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('../app/login/login.component').then((m) => m.LoginComponent),
   },
   {
     path: 'accounts',
