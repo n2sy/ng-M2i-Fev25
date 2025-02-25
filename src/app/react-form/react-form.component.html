@@ -1,0 +1,9 @@
+<form [formGroup]="signUpForm" (ngSubmit)="submitHandler()">
+  <label>Nom d'utilisateur</label>
+  <input type="text" class="form-control" formControlName="username" />
+
+  <label>Adresse mail</label>
+  <input type="text" class="form-control" formControlName="email" />
+
+  <button class="btn btn-primary">Submit</button>
+</form>

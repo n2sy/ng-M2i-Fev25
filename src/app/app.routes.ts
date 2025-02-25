@@ -62,6 +62,13 @@ export let myRoutes: Routes = [
       import('../app/login/login.component').then((m) => m.LoginComponent),
   },
   {
+    path: 'react',
+    loadComponent: () =>
+      import('../app/react-form/react-form.component').then(
+        (m) => m.ReactFormComponent
+      ),
+  },
+  {
     path: 'accounts',
     loadComponent: () =>
       import('../app/accounts/home-account/home-account.component').then(

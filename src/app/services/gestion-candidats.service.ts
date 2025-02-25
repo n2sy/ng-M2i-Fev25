@@ -31,4 +31,9 @@ export class GestionCandidatsService {
     let i = this.candidats.findIndex((element) => element._id == cand._id);
     this.candidats[i] = cand;
   }
+
+  deleteCandidat(idCand) {
+    let i = this.candidats.findIndex((element) => element._id == idCand);
+    this.candidats.splice(i, 1);
+  }
 }
