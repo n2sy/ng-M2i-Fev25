@@ -7,6 +7,8 @@ import { CvComponent } from './cv/cv.component';
 import { HomeAccountComponent } from './accounts/home-account/home-account.component';
 import { DirectComponent } from './direct/direct.component';
 import { ManageServersComponent } from './manage-servers/manage-servers.component';
+import { RecruterComponent } from './recruter/recruter.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +21,8 @@ import { ManageServersComponent } from './manage-servers/manage-servers.componen
     HomeAccountComponent,
     DirectComponent,
     ManageServersComponent,
+    RecruterComponent,
+    NavbarComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

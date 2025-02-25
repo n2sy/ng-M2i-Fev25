@@ -1,0 +1,15 @@
+<h4>Bienvenue chez M2i -- Formation Angular</h4>
+
+<h5>Navigation côté HTML</h5>
+
+<button routerLink="cv" class="btn btn-primary">Aller à CV</button>
+
+<button [routerLink]="['accounts']" class="btn btn-warning">
+  Aller à Accounts
+</button>
+
+<h5>Navigation côté Typescript</h5>
+
+<button (click)="goToServers()" class="btn btn-danger">Aller à Servers</button>
+
+<button (click)="goToAccounts()" class="btn btn-info">Aller à Accounts</button>

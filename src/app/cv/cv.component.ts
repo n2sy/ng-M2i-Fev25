@@ -6,11 +6,12 @@ import { FirstService } from '../services/first.service';
 import { FirstComponent } from '../first/first.component';
 import { GestionCandidatsService } from '../services/gestion-candidats.service';
 import { SecondService } from '../services/second.service';
+import { RecruterComponent } from '../recruter/recruter.component';
 
 @Component({
   selector: 'app-cv',
   standalone: true,
-  imports: [ListeComponent, DetailsComponent],
+  imports: [ListeComponent, DetailsComponent, RecruterComponent],
   templateUrl: './cv.component.html',
   styleUrl: './cv.component.css',
   providers: [SecondService],
