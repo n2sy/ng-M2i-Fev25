@@ -18,13 +18,17 @@ export class GestionCandidatsService {
     return this.candidats;
   }
 
-  addCandidat() {
-    this.candidats.push(
-      new Candidat(3, 'New', 'CANDIDATE', 20, 'designer', 'lisa.png')
-    );
+  addCandidat(newCandidat) {
+    newCandidat._id = this.candidats[this.candidats.length - 1]._id + 1;
+    this.candidats.push(newCandidat);
   }
 
   getCandidatById(id) {
     return this.candidats.find((element) => element._id == id);
+  }
+
+  updateCandidat(cand) {
+    let i = this.candidats.findIndex((element) => element._id == cand._id);
+    this.candidats[i] = cand;
   }
 }
