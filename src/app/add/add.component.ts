@@ -13,9 +13,12 @@ import { Router } from '@angular/router';
 export class AddComponent {
   private candSer = inject(GestionCandidatsService);
   private router = inject(Router);
+  showError = false;
+  isSubmitted = false;
 
   submitHandler(formValue, e) {
     // console.log(e.target[4].files[0]);
+    this.isSubmitted = true;
     let formData = new FormData();
     formData.append('avatar', e.target[4].files[0]);
     this.candSer.uploadAvatar(formData).subscribe({
@@ -27,6 +30,7 @@ export class AddComponent {
             this.router.navigateByUrl('/cv');
           },
           error: (err) => {
+            this.showError = true;
             console.log("Erreur avec l'ajout d'un candidat");
           },
         });

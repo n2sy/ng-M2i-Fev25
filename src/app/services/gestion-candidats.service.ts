@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Candidat } from '../models/candidat';
-import { HttpClient } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpParams,
+  HttpRequest,
+} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -30,7 +35,7 @@ export class GestionCandidatsService {
   }
 
   addCandidatAPI(newCandidat) {
-    return this.http.post(`${this.link}/free`, newCandidat);
+    return this.http.post(`${this.link}`, newCandidat);
   }
 
   uploadAvatar(f: FormData) {
@@ -51,7 +56,7 @@ export class GestionCandidatsService {
   }
 
   updateCandidatAPI(cand) {
-    return this.http.put(`${this.link}/free/${cand._id}`, cand);
+    return this.http.put(`${this.link}/${cand._id}`, cand);
   }
 
   deleteCandidat(idCand) {
@@ -61,6 +66,6 @@ export class GestionCandidatsService {
   deleteCandidatAPI(idCand) {
     console.log(idCand);
 
-    return this.http.delete(`${this.link}/free/${idCand}`);
+    return this.http.delete(`${this.link}/${idCand}`);
   }
 }

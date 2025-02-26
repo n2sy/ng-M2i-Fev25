@@ -8,6 +8,10 @@ import { InfosComponent } from './infos/infos.component';
 import { EditComponent } from './edit/edit.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
+import { blockGuard } from './block.guard';
+import { allowGuard } from './allow.guard';
+import { quitterFormGuard } from './quitter-form.guard';
+import { denyGuard } from './deny.guard';
 
 export let myRoutes: Routes = [
   {
@@ -29,6 +33,8 @@ export let myRoutes: Routes = [
         path: 'add',
         loadComponent: () =>
           import('../app/add/add.component').then((m) => m.AddComponent),
+        canActivate: [blockGuard],
+        canDeactivate: [quitterFormGuard],
       },
       {
         path: ':id',
@@ -44,6 +50,7 @@ export let myRoutes: Routes = [
             path: 'edit',
             loadComponent: () =>
               import('../app/edit/edit.component').then((m) => m.EditComponent),
+            canActivate: [blockGuard],
           },
         ],
       },
@@ -60,6 +67,8 @@ export let myRoutes: Routes = [
     path: 'login',
     loadComponent: () =>
       import('../app/login/login.component').then((m) => m.LoginComponent),
+    canDeactivate: [allowGuard],
+    canActivate: [denyGuard],
   },
   {
     path: 'react',

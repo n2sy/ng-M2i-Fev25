@@ -1,3 +1,8 @@
+@if (showError) {
+<div class="alert alert-danger">Vérifier que vous êtes bien connecté!</div>
+
+}
+
 <form #f="ngForm" (ngSubmit)="submitHandler(f.value, $event)">
   <label for="">Prénom</label>
   <input ngModel required name="prenom" type="text" class="form-control" />
