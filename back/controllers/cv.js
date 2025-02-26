@@ -141,7 +141,9 @@ exports.getAllrecrues = async (req, res, next) => {
 };
 exports.deleteCandidat = (req, res, next) => {
   const pId = req.params["id"];
-  Personne.findByIdAndRemove(pId)
+  console.log(pId);
+
+  Personne.findByIdAndDelete(pId)
     .then((p) => {
       console.log(p);
       if (!p) {
@@ -155,6 +157,8 @@ exports.deleteCandidat = (req, res, next) => {
       });
     })
     .catch((err) => {
+      console.log(err);
+
       next(err);
     });
 };

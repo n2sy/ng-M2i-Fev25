@@ -4,6 +4,17 @@
 
   <label>Adresse mail</label>
   <input type="text" class="form-control" formControlName="email" />
+  @if (signUpForm.get('email').invalid && signUpForm.get('email').dirty) {
+  <div class="alert alert-danger">Veuillez saisir une adresse mail valide</div>
+  }
+
+  <div formArrayName="skills">
+    <label>Compétences</label>
+    <button (click)="addSkill()">+</button>
+    @for (ctrl of formSkills.controls; track $index) {
+    <input type="text" class="form-control" [formControl]="$any(ctrl)" />
+    }
+  </div>
 
   <button class="btn btn-primary">Submit</button>
 </form>
