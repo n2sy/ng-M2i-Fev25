@@ -1,6 +1,8 @@
 import { JsonPipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +15,9 @@ export class LoginComponent {
   langageParDefaut = 'php';
   monCommentaire = 'RAS...';
   showLogin: boolean = true;
+  showError: boolean = false;
+  private authSer = inject(AuthService);
+  private router = inject(Router);
   submitHandler(f) {
     console.log(f.value);
   }
@@ -25,7 +30,29 @@ export class LoginComponent {
     this.showLogin = !this.showLogin;
   }
 
-  registerHandler() {}
+  registerHandler(identifiants) {
+    this.authSer.inscription(identifiants).subscribe({
+      next: (response) => {
+        alert(response['message']);
+        this.toggleShowLogin(); // this.showLogin = true;
+      },
+      error: (err) => {
+        console.log("Problème avec l'inscription de l'utilisateur");
+      },
+    });
+  }
 
-  loginHandler() {}
+  loginHandler(f: NgForm) {
+    this.authSer.seConnecter(f.value).subscribe({
+      next: (response) => {
+        localStorage.setItem('access_token', response['token']);
+        alert(response['message']);
+        this.router.navigateByUrl('/cv');
+      },
+      error: (err) => {
+        this.showError = true;
+        f.reset();
+      },
+    });
+  }
 }

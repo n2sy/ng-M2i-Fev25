@@ -1,4 +1,9 @@
-<form #f="ngForm" (ngSubmit)="submitHandler(f)">
+@if (showError) {
+<div class="alert alert-danger">Login et/ou Mot de passe invalides</div>
+
+}
+
+<form #f="ngForm">
   <label>Login</label>
   <input
     #inpLogin="ngModel"
@@ -51,12 +56,12 @@
   <pre>
     {{ f.value | json }}
   </pre> -->
-
+  <br /><br />
   <div class="row">
     <div class="col-6 offset-4">
       @if (showLogin) {
       <button
-        (click)="loginHandler()"
+        (click)="loginHandler(f)"
         [disabled]="f.invalid"
         class="btn btn-primary"
       >
@@ -68,7 +73,7 @@
 
       } @else {
       <button
-        (click)="(registerHandler)"
+        (click)="registerHandler(f.value)"
         [disabled]="f.invalid"
         class="btn btn-danger"
       >

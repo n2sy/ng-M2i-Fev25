@@ -1,9 +1,23 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
+  link = 'http://localhost:3000/auth';
 
-  constructor() { }
+  constructor(private http: HttpClient) {}
+
+  inscription(identifiants) {
+    return this.http.post(`${this.link}/register`, identifiants);
+  }
+
+  seConnecter(identifiants) {
+    return this.http.post(`${this.link}/login`, identifiants);
+  }
+
+  estConnecte() {}
+
+  seDeconnecter() {}
 }
