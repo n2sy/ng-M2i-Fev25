@@ -12,6 +12,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 export class LoginComponent {
   langageParDefaut = 'php';
   monCommentaire = 'RAS...';
+  showLogin: boolean = true;
   submitHandler(f) {
     console.log(f.value);
   }
@@ -19,4 +20,12 @@ export class LoginComponent {
   resetHandler(f: NgForm) {
     f.reset();
   }
+
+  toggleShowLogin() {
+    this.showLogin = !this.showLogin;
+  }
+
+  registerHandler() {}
+
+  loginHandler() {}
 }

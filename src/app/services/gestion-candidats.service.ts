@@ -50,6 +50,10 @@ export class GestionCandidatsService {
     this.candidats[i] = cand;
   }
 
+  updateCandidatAPI(cand) {
+    return this.http.put(`${this.link}/free/${cand._id}`, cand);
+  }
+
   deleteCandidat(idCand) {
     let i = this.candidats.findIndex((element) => element._id == idCand);
     this.candidats.splice(i, 1);

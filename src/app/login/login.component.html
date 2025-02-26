@@ -3,7 +3,7 @@
   <input
     #inpLogin="ngModel"
     ngModel
-    name="login"
+    name="email"
     required
     email
     type="text"
@@ -26,7 +26,7 @@
   <div class="alert alert-danger">Le nombre minimal de caractères est 5</div>
   }
 
-  <div ngModelGroup="infos">
+  <!-- <div ngModelGroup="infos">
     <label for="">Langage préféré</label>
     <select [ngModel]="langageParDefaut" name="langage" class="form-control">
       <option value=""></option>
@@ -45,10 +45,40 @@
     ></textarea>
   </div>
 
-  <button [disabled]="f.invalid" class="btn btn-primary">Submit</button>
+  
   <button (click)="resetHandler(f)" class="btn btn-warning">Reset</button>
 
   <pre>
     {{ f.value | json }}
-  </pre>
+  </pre> -->
+
+  <div class="row">
+    <div class="col-6 offset-4">
+      @if (showLogin) {
+      <button
+        (click)="loginHandler()"
+        [disabled]="f.invalid"
+        class="btn btn-primary"
+      >
+        Login
+      </button>
+      <button (click)="toggleShowLogin()" class="btn btn-warning">
+        Switch to Register
+      </button>
+
+      } @else {
+      <button
+        (click)="(registerHandler)"
+        [disabled]="f.invalid"
+        class="btn btn-danger"
+      >
+        S'inscrire
+      </button>
+      <button (click)="toggleShowLogin()" class="btn btn-info">
+        Switch to Login
+      </button>
+
+      }
+    </div>
+  </div>
 </form>
