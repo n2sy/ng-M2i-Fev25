@@ -1,0 +1,41 @@
+<div class="p-3">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Product Name</th>
+        <th>Price</th>
+        <th>Selected</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (product of productSer.allProducts(); track $index) {
+      <tr>
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.price | currency : "EUR" }}</td>
+        <td>
+          <button
+            class="btn"
+            [ngClass]="{
+              'btn-success': product.selected,
+              'btn-danger': !product.selected
+            }"
+            (click)="productSer.toggleSelected(product.id)"
+          >
+            {{ product.selected ? "Selected" : "Not Selected" }}
+          </button>
+        </td>
+        <td>
+          <button
+            (click)="productSer.deleteProduct(product.id)"
+            class="btn btn-outline-danger"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

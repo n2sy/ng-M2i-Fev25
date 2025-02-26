@@ -71,6 +71,13 @@ export let myRoutes: Routes = [
     canActivate: [denyGuard],
   },
   {
+    path: 'products',
+    loadComponent: () =>
+      import('../app/products/home-products/home-products.component').then(
+        (m) => m.HomeProductsComponent
+      ),
+  },
+  {
     path: 'react',
     loadComponent: () =>
       import('../app/react-form/react-form.component').then(

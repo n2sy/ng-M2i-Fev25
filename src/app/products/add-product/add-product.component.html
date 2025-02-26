@@ -1,0 +1,37 @@
+<form #f="ngForm" (ngSubmit)="productSer.addProduct(f.value)">
+  <table class="table tabled-bordered">
+    <tbody>
+      <tr>
+        <td>
+          <input
+            ngModel
+            required
+            name="name"
+            type="text"
+            class="form-control"
+          />
+        </td>
+        <td>
+          <input
+            ngModel
+            required
+            name="price"
+            type="number"
+            class="form-control"
+          />
+        </td>
+        <td>
+          <input
+            ngModel
+            name="selected"
+            type="checkbox"
+            class="p-2 form-check-input"
+          />
+        </td>
+        <td>
+          <button [disabled]="f.invalid" class="btn btn-success">Save</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</form>
